@@ -1,5 +1,5 @@
 # docker-kaleidoscope
-Docker Setup for kaleidoscope-cli
+Docker setup for kaleidoscope-cli
 
 ## Build with the following command
 ```bash
