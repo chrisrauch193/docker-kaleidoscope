@@ -1,17 +1,17 @@
-# Use a base ubuntu image
-FROM ubuntu:latest
+# Use a base RHEL 9 image
+FROM registry.access.redhat.com/ubi9/ubi:latest
 
 # Set non-interactive environment
-ENV DEBIAN_FRONTEND=noninteractive
+ENV container=docker
 
-# Update package lists and install wget and glibc dependecies
-RUN apt-get update && apt-get install -y wget libfftw3-single3 libpq5 libcurl4 libgtk-3-0 libpulse0
+# Update package lists and install wget and equivalent glibc dependencies
+RUN yum update -y && yum install -y wget
 
-# Download the Kaleidoscope package
-RUN wget https://downloads.wildlifeacoustics.com/kaleidoscope-5.6.5-ubuntu-22.deb -P /tmp
+# Download the Kaleidoscope package for RHEL
+RUN wget https://downloads.wildlifeacoustics.com/kaleidoscope-5.6.6-1.x86_64.rpm -P /tmp
 
 # Install the Kaleidoscope package
-RUN dpkg -i /tmp/kaleidoscope-5.6.5-ubuntu-22.deb
+RUN yum install -y /tmp/kaleidoscope-5.6.6-1.x86_64.rpm
 
-# Set the entrypoint to bash
+# Set the entrypoint to execute the kaleidoscope-cli and accept license 
 ENTRYPOINT ["/bin/bash", "-l", "-c", "kaleidoscope-cli --accept-license"]
