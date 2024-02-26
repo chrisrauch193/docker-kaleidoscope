@@ -1,5 +1,5 @@
 # Use a base RHEL 9 image
-FROM registry.access.redhat.com/ubi9/ubi:latest
+FROM registry.access.redhat.com/ubi9/ubi:9.3-1552
 
 # Set non-interactive environment
 ENV container=docker
