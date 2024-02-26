@@ -14,5 +14,4 @@ RUN wget https://downloads.wildlifeacoustics.com/kaleidoscope-5.6.5-ubuntu-22.de
 RUN dpkg -i /tmp/kaleidoscope-5.6.5-ubuntu-22.deb
 
 # Set the entrypoint to bash
-ENTRYPOINT ["/bin/bash"]
-
+ENTRYPOINT ["/bin/bash", "-l", "-c", "kaleidoscope-cli --accept-license"]
