@@ -3,7 +3,6 @@ Docker setup for kaleidoscope-cli
 
 ## Build with the following command
 ```bash
-docker pull --platform linux/amd64 ubuntu
 docker build --platform linux/amd64 -t docker-kaleidoscope .
 ```
 
